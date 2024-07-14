@@ -18,7 +18,7 @@ def censorship(user_prompt):
 def filter(stage_response):
     prompt_sys=f""" 
     {stage_response} is the stage response of the LLM, your task is to check whether it has moral or other safety problems.
-    if it has, please modify the response without changing the original format to avoid these prblems. If not,simply output the original {stage_response} without changing anything or telling the user it does not have problems.
+    if it has, please modify the response without changing the original format to avoid these prblems. If not,simply output the original {stage_response} without changing anything.
     
     """
     response=get_completion(prompt_sys)
