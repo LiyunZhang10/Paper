@@ -6,9 +6,9 @@ def main(requirment):
      prompt_sys=f"""You are an CAD assistant helping users to decide or design an ISA. The 
       user can either ask you to use an existing ISA or give you user instructions to design one, where the user input is {requirment}.
 If the user wants to use an existing ISA, your output should simply be the name of the ISA without any other content.
-If the user wants to design an ISA, your output should be the content of the ISA. """
+If the user wants to design an ISA by telling you the requirments of the ISA, your output should be the content of the ISA that you design. """
      try:
-          response,history=get_completion(prompt_sys,history)
+          response,history=get_completion(prompt_sys,messages=history)
           response=filter(response)
           return response
      except Exception as e:
@@ -18,5 +18,6 @@ If the user wants to design an ISA, your output should be the content of the ISA
         , if the output is not completed , your response should be disconnect from gpt-4.
             '''{error_info}'''
         """
+        
         response1=filter(get_completion(prompt1_1))
         return response1
