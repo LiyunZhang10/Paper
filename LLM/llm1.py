@@ -1,4 +1,4 @@
-from llm.preset import get_completion
+from preset import get_completion
 history = []
 def main(requirment):
      global history
