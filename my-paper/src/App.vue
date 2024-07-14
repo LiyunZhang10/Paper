@@ -1,25 +1,31 @@
 <template>
-  <hello-world />
+  <el-container style="height: 100vh">
+    <el-aside width="300px">
+      <MySidebar />
+    </el-aside>
+    <el-container>
+      <ChatBox />
+    </el-container>
+  </el-container>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import MySidebar from './components/MySidebar.vue';
+import ChatBox from './components/ChatBox.vue';
 
 export default {
-  name: 'App',
   components: {
-    HelloWorld
-  }
-}
+    MySidebar,
+    ChatBox,
+  },
+};
 </script>
 
 <style>
+body,
+html,
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  height: 100%;
+  margin: 0;
 }
 </style>
