@@ -1,18 +1,19 @@
 <template>
   <el-menu :default-active="activeIndex" class="el-menu-vertical-demo" @select="handleSelect">
     <el-menu-item index="1">ChatGPT</el-menu-item>
-    <el-submenu index="3">
+    <el-sub-menu index="3">
       <template #title>Previous 7 Days</template>
       <el-menu-item index="3-1">Optimize Vue2 ECharts Code</el-menu-item>
       <el-menu-item index="3-2">AI Model Summarizes Conversations</el-menu-item>
       <el-menu-item index="3-3">Dockerize Chrome and ChromeDriver</el-menu-item>
       <el-menu-item index="3-4">Dockerize Spring Boot Selenium</el-menu-item>
-    </el-submenu>
+    </el-sub-menu>
   </el-menu>
 </template>
 
 <script>
 export default {
+  name: 'MySidebar',
   data() {
     return {
       activeIndex: '1',

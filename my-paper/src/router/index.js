@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import ChatBox from '../components/ChatBox.vue'
+import ChatBox from '@/components/ChatBox.vue'
 
 const routes = [
   {

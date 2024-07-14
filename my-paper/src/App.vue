@@ -10,15 +10,16 @@
 </template>
 
 <script>
-import MySidebar from './components/MySidebar.vue';
-import ChatBox from './components/ChatBox.vue';
+import MySidebar from './components/MySidebar.vue'
+import ChatBox from './components/ChatBox.vue'
 
 export default {
+  name: 'App',
   components: {
     MySidebar,
     ChatBox,
   },
-};
+}
 </script>
 
 <style>
