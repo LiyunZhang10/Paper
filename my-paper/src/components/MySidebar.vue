@@ -4,9 +4,9 @@
     :default-active="activeIndex"
     class="sidebar-menu"
     @select="handleSelect"
-    background-color="#2c3e50"
-    text-color="#ffffff"
-    active-text-color="#ffd04b"
+    background-color="#f4f4f4"
+    text-color="#333"
+    active-text-color="#1890ff"
   >
     <el-menu-item index="1">
       <el-icon><ChatLineRound /></el-icon>

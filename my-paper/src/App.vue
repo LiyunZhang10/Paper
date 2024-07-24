@@ -1,7 +1,7 @@
 <!-- App.vue -->
 <template>
   <el-container class="app-container">
-    <el-aside width="250px" class="sidebar">
+    <el-aside width="300px" class="sidebar">
       <MySidebar />
     </el-aside>
     <el-container class="main-container">
@@ -34,22 +34,33 @@ body, html {
 
 .app-container {
   height: 100vh;
+  overflow: hidden;
 }
 
 .sidebar {
-  background-color: #2c3e50;
-  color: white;
+  background-color: #f4f4f4;
+  color: #333;
+  overflow-y: auto;
 }
 
 .main-container {
-  background-color: #f0f2f5;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
 }
 
 .header {
-  background-color: #3498db;
-  color: white;
+  background-color: #ffffff;
+  color: #333;
   display: flex;
   align-items: center;
   padding: 0 20px;
+  border-bottom: 1px solid #e0e0e0;
+  height: 60px;
+}
+
+.el-main {
+  padding: 0;
+  overflow: hidden;
 }
 </style>

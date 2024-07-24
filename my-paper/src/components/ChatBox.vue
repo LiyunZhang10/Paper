@@ -3,7 +3,10 @@
   <div class="chat-box">
     <div class="messages" ref="messagesContainer">
       <div v-for="message in messages" :key="message.id" :class="['message', message.type]">
-        {{ message.text }}
+        <div class="avatar" :class="message.type">
+          <img :src="message.type === 'user' ? userAvatar : botAvatar" :alt="message.type">
+        </div>
+        <div class="message-content">{{ message.text }}</div>
       </div>
     </div>
     <div class="input-area">
@@ -24,10 +27,19 @@
 <script setup>
 import { ref, onMounted, nextTick, watch } from 'vue'
 import { ChatLineRound, Promotion } from '@element-plus/icons-vue'
+import userAvatar from '@/assets/user.png'
+import botAvatar from '@/assets/robot.png'
 
 const messages = ref([
-  { id: 1, type: 'bot', text: 'Hello! How can I assist you today?' }
+  { id: 1, type: 'bot', text: 'Hello! How can I assist you today?' },
+  { id: 2, type: 'user', text: 'dataset instruction: In this competition, your task is to predict engagement with a pet\'s profile based on the photograph for that profile.' },
+  { id: 3, type: 'user', text: 'Dataset address: E:\\archive.zip' },
+  { id: 4, type: 'user', text: 'Training data address: E:\\archive.zip\\housing.csv' },
+  { id: 5, type: 'bot', text: 'The dataset consists of various columns associated with house prices in California. Here\'s a brief explanation of the data types for each column:\n\n- longitude: Numerical\n- latitude: Numerical\n- housing_median_age: Numerical\n- total_rooms: Numerical\n- total_bedrooms: Numerical\n- population: Numerical\n- households: Numerical\n- median_income: Numerical\n- median_house_value: Label (the target variable)\n- ocean_proximity: Categorical\n\nThe stage for analyzing modalities of dataset is completed. The next stage is to choose the model for machine learning. If you have instructions, please provide them. If not, simply press enter to continue.' },
+  { id: 6, type: 'user', text: 'I want to estimate housing prices' },
+  { id: 7, type: 'bot', text: 'Model: _inayet_autotrain-price-prediction-1331950900. The model chosen for the task of estimating housing prices is likely to have been selected based on its performance on the given tabular dataset during the AutoTrain process. This model was chosen for its ability to handle high-dimensional data and produce accurate predictions, especially for datasets consisting mainly of continuous variables. It minimizes the sum of squared residuals, making it robust for prediction tasks such as housing price estimation where accuracy is crucial. Additionally, this model offers a good balance between performance and efficiency.' },
 ])
+
 const newMessage = ref('')
 const messagesContainer = ref(null)
 
@@ -61,8 +73,6 @@ onMounted(scrollToBottom)
   flex-direction: column;
   height: calc(100vh - 60px);
   background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
 }
 
 .messages {
@@ -72,28 +82,50 @@ onMounted(scrollToBottom)
 }
 
 .message {
-  margin-bottom: 10px;
+  display: flex;
+  margin-bottom: 20px;
+  align-items: flex-start;
+}
+
+.message-content {
   padding: 10px;
   border-radius: 8px;
   max-width: 70%;
 }
 
 .user {
-  background-color: #e1f3fb;
-  align-self: flex-end;
-  margin-left: auto;
+  flex-direction: row-reverse;
 }
 
-.bot {
-  background-color: #f0f0f0;
-  align-self: flex-start;
+.user .message-content {
+  background-color: #e6f7ff;
+  margin-right: 10px;
+}
+
+.bot .message-content {
+  background-color: #f4f4f4;
+  margin-left: 10px;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin: 0 10px;
+  overflow: hidden;
+}
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .input-area {
   display: flex;
   padding: 20px;
   background-color: #f9f9f9;
-  border-top: 1px solid #eaeaea;
+  border-top: 1px solid #e0e0e0;
 }
 
 .input-area .el-input {
