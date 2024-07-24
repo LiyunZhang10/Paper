@@ -1,35 +1,53 @@
+<!-- MySidebar.vue -->
 <template>
-  <el-menu :default-active="activeIndex" class="el-menu-vertical-demo" @select="handleSelect">
-    <el-menu-item index="1">ChatGPT</el-menu-item>
-    <el-sub-menu index="3">
-      <template #title>Previous 7 Days</template>
-      <el-menu-item index="3-1">Optimize Vue2 ECharts Code</el-menu-item>
-      <el-menu-item index="3-2">AI Model Summarizes Conversations</el-menu-item>
-      <el-menu-item index="3-3">Dockerize Chrome and ChromeDriver</el-menu-item>
-      <el-menu-item index="3-4">Dockerize Spring Boot Selenium</el-menu-item>
+  <el-menu
+    :default-active="activeIndex"
+    class="sidebar-menu"
+    @select="handleSelect"
+    background-color="#2c3e50"
+    text-color="#ffffff"
+    active-text-color="#ffd04b"
+  >
+    <el-menu-item index="1">
+      <el-icon><ChatLineRound /></el-icon>
+      <span>ChatGPT</span>
+    </el-menu-item>
+    <el-sub-menu index="2">
+      <template #title>
+        <el-icon><Calendar /></el-icon>
+        <span>Previous 7 Days</span>
+      </template>
+      <el-menu-item index="2-1">Optimize Vue2 ECharts Code</el-menu-item>
+      <el-menu-item index="2-2">AI Model Summarizes Conversations</el-menu-item>
+      <el-menu-item index="2-3">Dockerize Chrome and ChromeDriver</el-menu-item>
+      <el-menu-item index="2-4">Dockerize Spring Boot Selenium</el-menu-item>
     </el-sub-menu>
   </el-menu>
 </template>
 
-<script>
-export default {
-  name: 'MySidebar',
-  data() {
-    return {
-      activeIndex: '1',
-    }
-  },
-  methods: {
-    handleSelect(key, keyPath) {
-      console.log(key, keyPath)
-    },
-  },
+<script setup>
+import { ref } from 'vue'
+import { ChatLineRound, Calendar } from '@element-plus/icons-vue'
+
+const activeIndex = ref('1')
+
+const handleSelect = (key, keyPath) => {
+  console.log(key, keyPath)
 }
 </script>
 
 <style scoped>
-.el-menu-vertical-demo {
-  width: 100%;
+.sidebar-menu {
   height: 100%;
+}
+
+.sidebar-menu .el-menu-item,
+.sidebar-menu .el-sub-menu__title {
+  display: flex;
+  align-items: center;
+}
+
+.sidebar-menu .el-icon {
+  margin-right: 10px;
 }
 </style>
